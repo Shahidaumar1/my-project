@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shahida Bibi - Portfolio</title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<!-- Lightbox CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #121212;
+      color: #fff;
+      line-height: 1.6;
+    }
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to right, #0f0f0f, #1c1c1c);
+      text-align: center;
+      padding: 2rem;
+    }
+    header h1 {
+      font-size: 3rem;
+      color: #00ffc3;
+      text-shadow: 0 0 10px #00ffc3;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+    nav {
+      background: #1e1e1e;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+    }
+    nav ul li a {
+      color: #00ffc3;
+      text-decoration: none;
+      padding: 1rem;
+      display: block;
+      transition: 0.3s;
+    }
+    nav ul li a:hover {
+      background: #333;
+    }
+    section {
+      padding: 4rem 2rem;
+    }
+    #about img {
+      width: 150px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+    .skills, .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-card, .project-card {
+      background: #1f1f1f;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 0 10px rgba(0,255,200,0.2);
+    }
+    .resume-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: #00ffc3;
+      color: #121212;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: #1a1a1a;
+      color: #777;
+    }
+    a { color: #00ffc3; }
+    .skill-card {
+      background: #1f1f1f;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 0 10px rgba(0, 255, 200, 0.2);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .skill-card i {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: #00ffc3;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .skill-card:hover i {
+      transform: scale(1.1);
+      color: #ff5733;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 15px rgba(0, 255, 200, 0.5);
+    }
+
+    .skill-card p {
+      margin-top: 10px;
+    }
+
+    .container {
+      padding: 50px 0;
+    }
+
+    #hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #fff;
+  background-color: #121212; /* fallback color if no image is set */
+}
+
+.hero-content {
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+}
+
+.hero-image {
+  border-radius: 50%;
+  max-width: 100%;
+  height: 200px;
+  box-shadow: 0 0 15px rgba(0, 255, 200, 0.2);
+}
+
+  section, header {
+    display: none;
+  }
+
+  section.active, header.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .home-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.home-btn {
+  padding: 12px 25px;
+  background-color: #00ffc3;
+  color: #121212;
+  font-weight: bold;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 200, 0.4);
+}
+
+.home-btn:hover {
+  background-color: #00c3a5;
+  transform: scale(1.05);
+}
+
+.home-btn.contact {
+  background-color: #ff5733;
+  color: white;
+}
+
+.home-btn.contact:hover {
+  background-color: #e74c3c;
+}
+
+</style>
+</head>
+<body>
+
+  <nav>
+        <ul style="align-items: center;">
+            <li style="margin-right: auto; padding: 1rem;">
+              <a href="#home" style="font-size: 1.5rem; font-weight: bold; color: #00ffc3; text-decoration: none;">
+                Shahida Dev
+              </a>
+      <li><a href="#home"  aria-label="Home">Home</a></li>
+      <li><a href="#about"  aria-label="about">About</a></li>
+      <li><a href="#skills"  aria-label="skills">Skills</a></li>
+      <li><a href="#education" aria-label="education">Education</a></li>
+<li><a href="#certificates" aria-label="certificates">Certificates</a></li>
+<li><a href="#experience" aria-label="experience">Experience</a></li>
+      <li><a href="#projects"  aria-label="project">Projects</a></li>
+      <li><a href="#contact"  aria-label="contact">Contact</a></li>
+    </ul>
+  </nav>
+
+    <header id="home" class="active">
+    <img src="shahida.jpg" alt="Shahida Bibi" class="img-fluid hero-image" />
+    <h1> Welcome to my portfolio! I'm Shahida Bibi</h1>
+    <p>a passionate Software Engineering student driven by curiosity and creativity. I specialize in web development, WordPress design, and cybersecurity fundamentals. With a strong foundation in HTML, CSS, JavaScript, and C++, I love turning ideas into real, user-friendly websites. Explore my projects, learn about my skills, and feel free to reach out—let’s build something amazing together!</p>
+
+    <p><b> Frontend Developer| WordPress Developer | Cybersecurity Learner</b></p>
+    <div class="home-buttons">
+      <a href="#projects" class="home-btn">View My Projects</a>
+      <a href="#contact" class="home-btn contact">Contact Me</a>
+    </div>
+
+  </header>
+
+  <!-- about section -->
+  <section id="about" data-aos="fade-right">
+    <div style="text-align: center;">
+     <h1>About </h1>
+     <p>"Hi, I'm Shahida Dev — a curious and creative mind diving deep into the world of web development and cybersecurity. With a strong foundation in tech and
+         a passion for building user-friendly websites, I'm on a journey to grow, learn, and bring ideas to life through code."</p>
+    <a href="cv shahida.pdf" class="resume-btn" download>Download Resume</a>
+    </div>
+  </section>
+<!-- skills section -->
+  <section id="skills" data-aos="fade-up">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill-card">
+        <i class="fab fa-html5"></i>
+        <p><strong>HTML5</strong><br><small>Markup Language</small></p>
+      </div>
+      <div class="skill-card">
+        <i class="fab fa-css3-alt"></i>
+        <p><strong>CSS3</strong><br><small>Styling & Layout</small></p>
+      </div>
+      <div class="skill-card">
+        <i class="fab fa-js"></i>
+        <p><strong>JavaScript</strong><br><small>Interactive Web Scripts</small></p>
+      </div>
+      <div class="skill-card">
+        <i class="fab fa-wordpress"></i>
+        <p><strong>WordPress</strong><br><small>CMS & Web Design</small></p>
+      </div>
+      <div class="skill-card">
+        <i class="fas fa-code"></i>
+        <p><strong>C++</strong><br><small>Programming Language</small></p>
+      </div>
+      <div class="skill-card">
+        <i class="fas fa-shield-alt"></i>
+        <p><strong>Cybersecurity</strong><br><small>Online Security Basics</small></p>
+      </div>
+    </div>
+  </section>
+
+<!-- project section -->
+<section id="projects" data-aos="zoom-in">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+         <img src="portfolio.png" alt="portfolio Project" style="width:100%; border-radius:10px;">
+        </a>
+        <h5 class="card-title">Project 1: Portfolio</h5>
+        <p class="card-text">"Welcome to my portfolio! I'm Shahida, a passionate and driven Full Stack Developer with expertise in WordPress, C++, and web technologies. I specialize in creating dynamic, user-friendly websites and applications that not only look great but are also optimized for performance and security. My goal
+           is to build websites that provide seamless experiences for users while ensuring security, scalability, and efficiency."</p>
+      </div>
+      <div class="project-card">
+        <a href="images/project2-full.jpg" data-lightbox="projects" data-title="Calculator App">
+          <img src="landing page.png" alt="Calculator Project" style="width:100%; border-radius:10px;">
+        </a>
+            <h5 class="card-title"><strong>Responsive landing page website</strong> </h5>
+            <p class="card-text">Are you looking for high-quality work delivered on time and tailored to your specific needs? Look no further! With years of experience in graphic
+               design, web development, and digital marketing, I offer a range of freelance services to help bring your ideas to life.Whether you need stunning designs, a fully 
+                website, or a digital marketing strategy to boost your online presence, I am here to make it happen. </p>  </div>
+          </div>
+    </div>
+  </section>
+  
+<!-- certificates section -->
+<section id="certificates" data-aos="fade-up">
+    <h2>Certificates</h2>
+    <div class="skills">
+      <div class="skill-card">
+       
+        <img src="wordpress .jpg" alt="WordPress Certificate" style="width:100%; border-radius:8px;" />
+        <p><strong>WordPress Development</strong><br><small>DigiSkills</small></p>
+      </div>
+  
+      <div class="skill-card">
+        <img src="freelancing.jpg" alt="Freelancing Certificate" style="width:100%; border-radius:8px;" />
+        <p><strong>Freelancing</strong><br><small>DigiSkills</small></p>
+      </div>
+
+      <div class="skill-card">
+        <img src="c+++.jpg" alt="C++ Certificate" style="width:100%; border-radius:8px;" />
+        <p><strong>C++ Programming</strong><br><small>Cisco Networking Academy</small></p>
+      </div>
+  
+      <div class="skill-card">
+        <img src="cybersecurity.jpg" alt="Cybersecurity Certificate" style="width:100%; border-radius:8px;" />
+        <p><strong>Cybersecurity</strong><br><small>Cisco Networking Academy</small></p>
+      </div>
+  
+     
+    </div>
+  </section>
+  
+  <!-- education section -->
+  <section id="education" data-aos="fade-right">
+    <h2>Education</h2>
+    <ul>
+      <li>BS Software Engineering – Continue</li>
+      <li>FSc Pre-Engineering – Completed</li>
+      <li>Matriculation – Completed</li>
+    </ul>
+  </section>
+
+  <!-- experience section -->
+  <section id="experience" data-aos="fade-left">
+    <h2>Experience</h2>
+    <ul>
+      <li>1 Year Teaching Experience</li>
+      <li>2 Years Digital & Network Marketing</li>
+       </ul>
+  </section>
+  
+<!-- contact section -->
+  <section id="contact" data-aos="fade-left">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:shahidabibi@example.com">shahidaumarflp@gmail.com</a></p>
+   
+    <div class="social-icons">
+      <a href="https://linkedin.com/in/yourprofile" target="_blank">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/yourusername" target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://twitter.com/yourhandle" target="_blank">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://facebook.com/yourprofile" target="_blank">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </div>
+  </section>
+  
+  <footer>
+    <p>&copy; 2025 Shahida Bibi. All rights reserved.</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  $(document).ready(function () {
+    AOS.init({ duration: 1000 });
+
+    // Handle all internal link clicks
+    $('a[href^="#"]').on('click', function (e) {
+      e.preventDefault();
+      const target = $(this).attr('href');
+
+      // Only scroll and show if the target exists
+      if ($(target).length) {
+        $('section, header').removeClass('active');
+        $(target).addClass('active');
+
+        const targetOffset = $(target).offset().top - 50;
+        $('html, body').animate({ scrollTop: targetOffset }, 700);
+      }
+    });
+  });
+  $('a[href^="#"]').on('click', function (e) {
+  // ...
+});
+
+</script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <!-- Lightbox JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
+ 
+</body>
+</html>
